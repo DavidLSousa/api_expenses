@@ -9,10 +9,13 @@ import {
   HttpCode,
   NotFoundException,
   Query,
+  UsePipes,
+  ValidationPipe,
 } from '@nestjs/common';
 import { ExpensesService } from './expenses.service';
 import { CreateExpenseDto } from './dto/create-expense.dto';
 import { UpdateExpenseDto } from './dto/update-expense.dto';
+import { FindExpensesQueryDto } from './dto/find-expenses-query.dto';
 
 @Controller('expenses')
 export class ExpensesController {
@@ -24,12 +27,13 @@ export class ExpensesController {
   }
 
   @Get()
-  findAll(
-    @Query('month') month: string,
-    @Query('year') year: string,
-    @Query('category') category: string,
-  ) {
-    return this.expensesService.findAll(month, year, category);
+  @UsePipes(new ValidationPipe({ transform: true }))
+  findAll(@Query() query: FindExpensesQueryDto) {
+    return this.expensesService.findAll(
+      query.month,
+      query.year,
+      query.category,
+    );
   }
 
   @Get(':id')
