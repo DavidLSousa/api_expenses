@@ -10,7 +10,7 @@ POST http://localhost:3000/expenses
 Content-Type: application/json
 
 {
-  "title": "Transporte",
+  "title": "Transportes",
   "amount": 1000.00,
   "category": "Trabalho",
   "date": "2025-04-26T20:30:00.000Z"
@@ -28,4 +28,4 @@ Content-Type: application/json
 }
 
 ### Delete Expense by ID
-DELETE http://localhost:3000/expenses/af5335d8-6c28-406d-ac17-3a1749ee11ba
+DELETE http://localhost:3000/expenses/c927a510-7690-4d66-bc5d-e218a1769903
