@@ -2,15 +2,17 @@
 GET http://localhost:3000/expenses
 ### List Expenses filter by date
 GET http://localhost:3000/expenses?month=04&year=2025
+### List Expenses filter by category
+GET http://localhost:3000/expenses?category=Lazer
 
 ### Create Expense
 POST http://localhost:3000/expenses
 Content-Type: application/json
 
 {
-  "title": "Restaurante",
-  "amount": 100.00,
-  "category": "Lazer",
+  "title": "Transporte",
+  "amount": 1000.00,
+  "category": "Trabalho",
   "date": "2025-04-26T20:30:00.000Z"
 }
 
