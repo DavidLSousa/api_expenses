@@ -8,6 +8,7 @@ import {
   Delete,
   HttpCode,
   NotFoundException,
+  Query,
 } from '@nestjs/common';
 import { ExpensesService } from './expenses.service';
 import { CreateExpenseDto } from './dto/create-expense.dto';
@@ -23,8 +24,8 @@ export class ExpensesController {
   }
 
   @Get()
-  findAll() {
-    return this.expensesService.findAll();
+  findAll(@Query('month') month: string, @Query('year') year: string) {
+    return this.expensesService.findAll(month, year);
   }
 
   @Get(':id')
