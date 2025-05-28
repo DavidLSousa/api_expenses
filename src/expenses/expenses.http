@@ -1,0 +1,30 @@
+### List Expenses
+GET http://localhost:3000/expenses
+
+### Create Expense
+POST http://localhost:3000/expenses
+Content-Type: application/json
+
+{
+  "title": "Supermercado",
+  "amount": 250.75,
+  "category": "Alimentação",
+  "date": "2025-05-27T14:00:00.000Z"
+}
+
+### Get Expense by ID
+GET http://localhost:3000/expenses/1
+
+### Update Expense by ID
+PATCH http://localhost:3000/expenses/1
+Content-Type: application/json
+
+{
+  "title": "Restaurante",
+  "amount": 120.00,
+  "category": "Lazer",
+  "date": "2025-05-26T20:30:00.000Z"
+}
+
+### Delete Expense by ID
+DELETE http://localhost:3000/expenses/10
