@@ -6,6 +6,8 @@ import {
   Patch,
   Param,
   Delete,
+  HttpCode,
+  NotFoundException,
 } from '@nestjs/common';
 import { ExpensesService } from './expenses.service';
 import { CreateExpenseDto } from './dto/create-expense.dto';
@@ -26,17 +28,29 @@ export class ExpensesController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.expensesService.findOne(id);
+  async findOne(@Param('id') id: string) {
+    const expenses = await this.expensesService.findOne(id);
+    if (!expenses) throw new NotFoundException();
+    return expenses;
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateExpenseDto: UpdateExpenseDto) {
-    return this.expensesService.update(id, updateExpenseDto);
+  async update(
+    @Param('id') id: string,
+    @Body() updateExpenseDto: UpdateExpenseDto,
+  ) {
+    const expenses = await this.expensesService.update(id, updateExpenseDto);
+    if (!expenses) throw new NotFoundException();
+    return expenses;
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.expensesService.remove(id);
+  @HttpCode(204)
+  async remove(@Param('id') id: string) {
+    try {
+      await this.expensesService.remove(id);
+    } catch {
+      throw new NotFoundException();
+    }
   }
 }
