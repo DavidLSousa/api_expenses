@@ -1,5 +1,7 @@
 ### List Expenses
 GET http://localhost:3000/expenses
+### List Expenses filter by date
+GET http://localhost:3000/expenses?month=04&year=2025
 
 ### Create Expense
 POST http://localhost:3000/expenses
@@ -7,9 +9,9 @@ Content-Type: application/json
 
 {
   "title": "Restaurante",
-  "amount": 120.00,
+  "amount": 100.00,
   "category": "Lazer",
-  "date": "2025-05-26T20:30:00.000Z"
+  "date": "2025-04-26T20:30:00.000Z"
 }
 
 ### Get Expense by ID
