@@ -8,7 +8,7 @@ Uma API REST robusta e escalável para controle de **despesas pessoais**, desenv
 
 🔹 **CRUD completo de Despesas**:
 - Criar uma nova despesa
-- Listar todas as despesas com filtros opcionais
+- Listar todas as despesas com filtros opcionais(month and year or category)
 - Buscar uma despesa pelo ID
 - Atualizar dados de uma despesa
 - Excluir uma despesa
