@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { CreateExpenseDto } from './dto/create-expense.dto';
 import { UpdateExpenseDto } from './dto/update-expense.dto';
 import { PrismaService } from 'src/database/prisma.service';
@@ -11,18 +11,10 @@ export class ExpensesService {
     return this.prisma.expense.create({ data: dto });
   }
 
-  async findAll(month: string, year: string, category: string) {
+  async findAll(month?: number, year?: number, category?: string) {
     if (month && year) {
-      const monthNum = parseInt(month, 10);
-      const yearNum = parseInt(year, 10);
-
-      if (isNaN(monthNum) || isNaN(yearNum) || monthNum < 1 || monthNum > 12) {
-        throw new BadRequestException('Month and year must be valid numbers');
-      }
-
-      const startDate = new Date(`${year}-${month}-01T00:00:00`);
-      const endDate = new Date(startDate);
-      endDate.setMonth(endDate.getMonth() + 1);
+      const startDate = new Date(year, month - 1, 1);
+      const endDate = new Date(year, month, 1);
 
       return this.prisma.expense.findMany({
         where: {
