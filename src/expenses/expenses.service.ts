@@ -11,7 +11,7 @@ export class ExpensesService {
     return this.prisma.expense.create({ data: dto });
   }
 
-  async findAll(month: string, year: string) {
+  async findAll(month: string, year: string, category: string) {
     if (month && year) {
       const monthNum = parseInt(month, 10);
       const yearNum = parseInt(year, 10);
@@ -31,6 +31,12 @@ export class ExpensesService {
             lt: endDate,
           },
         },
+      });
+    }
+
+    if (category) {
+      return this.prisma.expense.findMany({
+        where: { category },
       });
     }
 

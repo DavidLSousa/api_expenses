@@ -24,8 +24,12 @@ export class ExpensesController {
   }
 
   @Get()
-  findAll(@Query('month') month: string, @Query('year') year: string) {
-    return this.expensesService.findAll(month, year);
+  findAll(
+    @Query('month') month: string,
+    @Query('year') year: string,
+    @Query('category') category: string,
+  ) {
+    return this.expensesService.findAll(month, year, category);
   }
 
   @Get(':id')
