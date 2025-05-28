@@ -7,7 +7,6 @@ import {
   Param,
   Delete,
   HttpCode,
-  NotFoundException,
   Query,
   UsePipes,
   ValidationPipe,
@@ -37,20 +36,13 @@ export class ExpensesController {
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: string) {
-    const expenses = await this.expensesService.findOne(id);
-    if (!expenses) throw new NotFoundException();
-    return expenses;
+  findOne(@Param('id') id: string) {
+    return this.expensesService.findOne(id);
   }
 
   @Patch(':id')
-  async update(
-    @Param('id') id: string,
-    @Body() updateExpenseDto: UpdateExpenseDto,
-  ) {
-    const expenses = await this.expensesService.update(id, updateExpenseDto);
-    if (!expenses) throw new NotFoundException();
-    return expenses;
+  update(@Param('id') id: string, @Body() updateExpenseDto: UpdateExpenseDto) {
+    return this.expensesService.update(id, updateExpenseDto);
   }
 
   @Delete(':id')

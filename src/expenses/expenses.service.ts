@@ -35,13 +35,23 @@ export class ExpensesService {
     return this.prisma.expense.findMany();
   }
 
-  findOne(id: string) {
+  async findOne(id: string) {
+    const expense = await this.prisma.expense.findUnique({ where: { id } });
+    if (!expense) {
+      throw new NotFoundException(`Expense with id ${id} not found`);
+    }
+
     return this.prisma.expense.findUnique({
       where: { id },
     });
   }
 
-  update(id: string, dto: UpdateExpenseDto) {
+  async update(id: string, dto: UpdateExpenseDto) {
+    const expense = await this.prisma.expense.findUnique({ where: { id } });
+    if (!expense) {
+      throw new NotFoundException(`Expense with id ${id} not found`);
+    }
+
     return this.prisma.expense.update({
       where: { id },
       data: dto,
