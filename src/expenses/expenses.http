@@ -6,25 +6,25 @@ POST http://localhost:3000/expenses
 Content-Type: application/json
 
 {
-  "title": "Supermercado",
-  "amount": 250.75,
-  "category": "Alimentação",
-  "date": "2025-05-27T14:00:00.000Z"
-}
-
-### Get Expense by ID
-GET http://localhost:3000/expenses/1
-
-### Update Expense by ID
-PATCH http://localhost:3000/expenses/1
-Content-Type: application/json
-
-{
   "title": "Restaurante",
   "amount": 120.00,
   "category": "Lazer",
   "date": "2025-05-26T20:30:00.000Z"
 }
 
+### Get Expense by ID
+GET http://localhost:3000/expenses/0fa1b274-7aa1-4ec7-a73b-58aa6bd0c06d
+
+### Update Expense by ID
+PATCH http://localhost:3000/expenses/a4cc8c36-e544-4017-8c53-e7a96ea91e0e
+Content-Type: application/json
+
+{
+  "title": "Restaurante",
+  "amount": 300.00,
+  "category": "Lazer",
+  "date": "2025-05-26T20:30:00.000Z"
+}
+
 ### Delete Expense by ID
-DELETE http://localhost:3000/expenses/10
+DELETE http://localhost:3000/expenses/ba8324c0-57cb-4227-a718-598f3daa3eba
