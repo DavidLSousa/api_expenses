@@ -1,4 +1,4 @@
-# 💸 ExpenseTracker API
+# 💸 Expenses API
 
 Uma API REST robusta e escalável para controle de **despesas pessoais**, desenvolvida com **NestJS**, **Prisma ORM** e **PostgreSQL**. Ideal para aplicações que precisam registrar, consultar, editar e excluir gastos com eficiência e clareza.
 
@@ -60,9 +60,9 @@ Uma API REST robusta e escalável para controle de **despesas pessoais**, desenv
 ## 🛠️ Como Executar Localmente
 
 1. Clone o repositório:
-   ```bash
-   git clone https://github.com/DavidLSousa/api_expenses.git
-   cd api_expenses
+  ```bash
+  git clone https://github.com/DavidLSousa/api_expenses.git
+  cd api_expenses
 
 2. Instale as dependências:
   ```bash
