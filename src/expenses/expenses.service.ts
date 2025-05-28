@@ -1,26 +1,38 @@
 import { Injectable } from '@nestjs/common';
 import { CreateExpenseDto } from './dto/create-expense.dto';
 import { UpdateExpenseDto } from './dto/update-expense.dto';
+import { PrismaService } from 'src/database/prisma.service';
 
 @Injectable()
 export class ExpensesService {
-  create(createExpenseDto: CreateExpenseDto) {
-    return 'This action adds a new expense';
+  constructor(private readonly prisma: PrismaService) {}
+
+  create(dto: CreateExpenseDto) {
+    return this.prisma.expense.create({ data: dto });
   }
 
-  findAll() {
-    return `This action returns all expenses`;
+  async findAll() {
+    const allExpenses = await this.prisma.expense.findMany();
+    if (!allExpenses) return null;
+    return allExpenses;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} expense`;
+  findOne(id: string) {
+    return this.prisma.expense.findUnique({
+      where: { id },
+    });
   }
 
-  update(id: number, updateExpenseDto: UpdateExpenseDto) {
-    return `This action updates a #${id} expense`;
+  update(id: string, dto: UpdateExpenseDto) {
+    return this.prisma.expense.update({
+      where: { id },
+      data: dto,
+    });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} expense`;
+  async remove(id: string) {
+    await this.prisma.expense.delete({
+      where: { id },
+    });
   }
 }
