@@ -85,3 +85,10 @@ Uma API REST robusta e escalável para controle de **despesas pessoais**, desenv
   ```
 
 ✅ Pronto! A API estará disponível em: http://localhost:3000
+
+## 🛠️ Como Executar usado Docker
+Execute os comandos: 
+  ```bash
+  docker pull davidlsousa/api-expenses:latest
+
+  docker run -p 3000:3000 -e DATABASE_URL="your_url" api-expenses
