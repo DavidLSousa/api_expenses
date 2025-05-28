@@ -20,11 +20,8 @@ PATCH http://localhost:3000/expenses/a4cc8c36-e544-4017-8c53-e7a96ea91e0e
 Content-Type: application/json
 
 {
-  "title": "Restaurante",
-  "amount": 300.00,
-  "category": "Lazer",
-  "date": "2025-05-26T20:30:00.000Z"
+  "amount": 301.00
 }
 
 ### Delete Expense by ID
-DELETE http://localhost:3000/expenses/ba8324c0-57cb-4227-a718-598f3daa3eba
+DELETE http://localhost:3000/expenses/af5335d8-6c28-406d-ac17-3a1749ee11ba
