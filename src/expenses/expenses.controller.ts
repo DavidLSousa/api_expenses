@@ -56,10 +56,6 @@ export class ExpensesController {
   @Delete(':id')
   @HttpCode(204)
   async remove(@Param('id') id: string) {
-    try {
-      await this.expensesService.remove(id);
-    } catch {
-      throw new NotFoundException();
-    }
+    await this.expensesService.remove(id);
   }
 }
